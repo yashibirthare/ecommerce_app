@@ -1,0 +1,36 @@
+<header>
+    <%= render 'layouts/navigation' %>
+</header>
+
+<div class="container">
+<center>
+<h1>Cart</h1>
+<table class="table table-hover" style="margin-top: 4em;width: 60rem;">
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Unit Price</th>
+      <th>Total Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @carts.each do |cart| %>
+    <% @products.each do |product| %> 
+    <tr>
+      <% if product.id == cart.product_id %>    
+      <td><%= product.name %></td>     
+      <td><%= number_field_tag :quantity, in: 1..10 %></td>
+      <td><%= product.price %></td>
+      <td><%= product.price %></td>
+      <td><%= link_to "Remove", cart, method: :delete, data: { confirm: "Are you sure?" } %></td>
+      <% end %>
+    </tr> 
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+</center>
+</div>

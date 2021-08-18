@@ -1,0 +1,32 @@
+<header>
+    <%= render 'layouts/navigation' %>
+</header>
+
+<div class="container">
+<center>
+<h1>Wishlist</h1>
+<table class="table table-hover" style="margin-top: 4em;width: 60rem;">
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @wishlists.each do |wishlist| %>
+    <tr>     
+      <% @products.each do |product| %> 
+      <% if product.id == wishlist.product_id %>    
+      <td><%= product.name %></td>
+      <td><%= product.price %></td>
+      <td><%= link_to "Remove", cart, method: :delete, data: { confirm: "Are you sure?" } %></td>
+      <% end %>
+      <% end %>
+    </tr> 
+    <% end %>
+  </tbody>
+</table>
+
+</center>
+</div>

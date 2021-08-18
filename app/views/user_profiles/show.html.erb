@@ -1,0 +1,24 @@
+<header>
+  <%= render 'layouts/navigation' %>
+</header>
+
+<div class="card" style="width: 20rem;margin-left: 25rem;">
+  <div class="card-body">
+    <center><h5 class="card-title">User Profile</h5></center>
+    <br>
+    <label>Email:</label>
+    <label><%= @user.email %></label>
+    <br>
+    <label>Phone:</label>
+    <label><%= @user.phone %></label>
+    <br>
+    <label>Image:</label>
+    <%= image_tag @user.profile_img, style: "width:50px;" %>
+    <br>
+    <label>Address:</label>
+    <label><%= @user.address %></label>
+
+    <br><br>
+    <center><%= link_to 'Update Profile', edit_user_registration_path, class: "btn btn-outline-success my-2 my-sm-0" %></center>
+  </div>
+</div>
