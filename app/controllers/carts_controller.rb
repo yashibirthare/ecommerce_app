@@ -11,7 +11,7 @@ class CartsController < ApplicationController
 
     def create
 
-        @carts = current_user.carts.new(product_id: params[:product_id])
+        @carts = current_user.carts.build()
         @carts.save
         redirect_to homes_path
     

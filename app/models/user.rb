@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_img
 
-  has_many :carts
+  has_one :cart
   has_many :wishlists
   has_many :orders
   
