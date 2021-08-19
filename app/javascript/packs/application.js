@@ -16,3 +16,24 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+
+// quantity-update
+// $(document).on("keyup change", ".bases", function() {
+//   totalSides();
+// });
+
+// function totalSides() {
+//   var tmp = 0;
+//   var total = 0;
+
+//   $(".bases").each(function() {
+//     tmp = parseInt($(this).val(), 10);
+//     if (isNaN(tmp)) {
+//       tmp = 0;
+//     };
+//     total = total + tmp;
+//   });
+
+//   $("#total-bases").html(total);
+// };
+

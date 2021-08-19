@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
 	has_and_belongs_to_many :categories
-	has_many :carts
+	
+	has_many :cart_items
+	has_many :carts, through: :cart_items
+
 end

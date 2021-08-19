@@ -1,5 +1,6 @@
 class HomesController < ApplicationController
   def index
+   
     # @products = Product.all
     @categories = Category.main_c
 

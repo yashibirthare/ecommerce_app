@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :homes
   resources :carts
   resources :wishlists
+  resources :orders
 end
