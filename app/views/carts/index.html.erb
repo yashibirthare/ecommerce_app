@@ -16,20 +16,19 @@
     </tr>
   </thead>
   <tbody>
-    <% @carts.each do |cart| %>
-    <% @products.each do |product| %> 
+    
     <tr>
-      <% if product.id == cart.product_id %>    
-      <td><%= product.name %></td>     
-      <td><%= number_field_tag :quantity ,1, in: 1..10, class: 'bases' %></td>
-      <td ><%= product.price %></td>
-      <td><span id="total-bases"><%= product.price %></span></td>
-      <td><%= link_to "Remove", cart, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        
+      <td></td>     
+      <td>
+        <!-- <= number_field_tag :quantity ,1, in: 1..10, class: 'bases' %> -->
+      </td>
+      <td ></td>
+      <td><span id="total-bases"></span></td>
+      <!-- <td><= link_to "Remove", cart, method: :delete, data: { confirm: "Are you sure?" } %></td> -->
 
-      <% end %> 
+      
     </tr>
-    <% end %> 
-    <% end %>
   </tbody>
 </table>
 
