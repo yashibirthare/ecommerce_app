@@ -14,7 +14,8 @@ gem 'activeadmin'
 gem "letter_opener", group: :development
 #razorpay for payment
 gem 'razorpay'
-
+#nested_attributes_form
+gem "nested_form"
 #Use pg as the database for Active Record
 gem 'pg'
 # Use sqlite3 as the database for Active Record

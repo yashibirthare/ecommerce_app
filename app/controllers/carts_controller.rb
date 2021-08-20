@@ -1,26 +1,14 @@
 class CartsController < ApplicationController
-    def index
-        # @carts = current_user.carts.all
-        @products = Product.all
+    def index 
+    end
+    def show 
+        @cart = current_cart
+        @cart_items = @cart.cart_items
     end
 
-    # def new
-    #     @carts = Cart.new
-    # end
-
-
-    # def create
-
-    #     @carts = current_user.carts.build()
-    #     @carts.save
-    #     redirect_to homes_path
-    
-    # end
-
-    # def destroy
-    #     @cart = current_user.carts.find(params[:id])
-    #     @cart.destroy
-    #     redirect_to homes_path
-    # end
+    def edit
+        @cart = current_cart
+        @cart_item = @cart.cart_items.find_by(id: params[:cart_id])
+    end
 
 end

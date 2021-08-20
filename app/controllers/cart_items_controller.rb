@@ -1,19 +1,28 @@
 class CartItemsController < ApplicationController
-	def create
-		# product = Product.find(params[:product_id])
-		current_cart = @current_cart
+  
 
-		@cart_item = CartItem.new
-		@cart_item.cart = current_cart
-    	# @cart_item.product = product
+  def create
+    product = Product.find_by(id: params[:product_id])  
+    if product.present?
+      @cart = Cart.find_or_initialize_by(user_id: current_user.id)
+      @cart.save
+      @cart_item = product.cart_items.find_or_initialize_by(cart_id: @cart.id)
+      @cart_item.quantity = params[:quantity] 
+      if @cart_item.save
 
-    	@cart_item.save
-    	redirect_to homes_path
+        redirect_to carts_path
+      else
+        redirect_to homes_path
+      end  
+    else
+      
+      redirect_to homes_path
+    end
+  end
+                                                                                                 
+  private
+  def cart_item_params
+    params.require(:cart_item).permit(:product_id, :cart_id, :quantity)
+  end
 
-	end
-
-	private
-	def cart_item_params
-		params.require(:cart_item).permit(:product_id, :cart_id)
-	end
 end

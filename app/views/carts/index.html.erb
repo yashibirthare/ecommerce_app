@@ -12,23 +12,18 @@
       <th scope="col">Quantity</th>
       <th scope="col">Unit Price</th>
       <th scope="col">Total Price</th>
-      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
-    
+    <% @cart_items.each do |cart|%>
     <tr>
         
-      <td></td>     
-      <td>
-        <!-- <= number_field_tag :quantity ,1, in: 1..10, class: 'bases' %> -->
-      </td>
-      <td ></td>
-      <td><span id="total-bases"></span></td>
-      <!-- <td><= link_to "Remove", cart, method: :delete, data: { confirm: "Are you sure?" } %></td> -->
-
-      
+      <td><%= cart.product.name %></td>     
+      <td><%= cart.quantity %></td>
+      <td><%= cart.product.price %></td>
+      <td><%= cart.total_price %></td> 
     </tr>
+    <% end %>
   </tbody>
 </table>
 
