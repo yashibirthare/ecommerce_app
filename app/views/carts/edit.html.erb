@@ -2,9 +2,18 @@
   <%= render 'layouts/navigation' %>
 </header>
 
-<div class="card" style="width: 30rem;margin-left: 25rem;">
+<div class="card" style="width: 40rem;margin-left: 25rem;">
   <div class="card-body">
     <center><h5 class="card-title">Edit Cart</h5></center>
-   
+    <%= nested_form_for @cart do |form|%>
+      <%= form.fields_for :cart_items do |f|%>
+        <%= f.label f.object.product.name %><br>
+        <%= f.label :quantity %>
+        <%= f.number_field :quantity %>
+        <%= f.link_to_remove "Remove" %>
+      <% end %>
+      <br>
+      <center><%= form.submit %></center>
+    <% end %>
   </div>
 </div>

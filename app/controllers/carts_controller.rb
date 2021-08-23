@@ -8,7 +8,21 @@ class CartsController < ApplicationController
 
     def edit
         @cart = current_cart
-        @cart_item = @cart.cart_items.find_by(id: params[:cart_id])
+
     end
 
+    def update
+        @cart = current_cart 
+        if @cart.update(cart_params)
+            redirect_to homes_path
+        else
+            render :edit
+        end
+    end
+
+
+    private
+    def cart_params
+        params.require(:cart).permit(cart_items_attributes: [:id, :quantity, :_destroy])
+    end
 end

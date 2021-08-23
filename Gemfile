@@ -12,6 +12,7 @@ gem 'devise'
 gem 'activeadmin'
 #letter_opner
 gem "letter_opener", group: :development
+gem 'jquery-rails'
 #razorpay for payment
 gem 'razorpay'
 #nested_attributes_form

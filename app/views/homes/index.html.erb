@@ -22,7 +22,7 @@
         			
         			<% unless @cart.cart_items.pluck(:product_id).include?(product.id) %>
         				<%= form_with url: product_cart_items_path(:product_id => product.id), method: :post do |f| %>       				
-        					<%= f.number_field :quantity, in: 1..10 %><br><br>
+        					<%= f.number_field :quantity,value:1, in: 1..10 %><br><br>
 							<%= f.submit "Add to Cart" %>
         				<% end %>
         			<% else %>

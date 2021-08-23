@@ -12,7 +12,6 @@
       <th scope="col">Quantity</th>
       <th scope="col">Unit Price</th>
       <th scope="col">Total Price</th>
-      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -23,13 +22,12 @@
       <td><%= cart.quantity %></td>
       <td><%= cart.product.price %></td>
       <td><%= cart.total_price %></td>
-      <td><%= link_to "Edit Cart", edit_cart_path(cart), class: "btn btn-outline-success" %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-
+<%= link_to "Edit Cart", edit_cart_path, class: "btn btn-outline-success" %>
 <%= link_to 'Checkout', '/orders' ,method: :post, class: "btn btn-outline-success" %>
 </center>
 </div>
