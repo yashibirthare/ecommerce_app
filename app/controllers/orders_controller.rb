@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
     skip_before_action :verify_authenticity_token
     
     def index  
-        @orders = current_user.orders.include(:order_items)
+        @orders = current_user.orders.includes(:order_items)
     end
 
     def create
