@@ -24,11 +24,14 @@
       <td><%= cart.total_price %></td>
     </tr>
     <% end %>
+    <tr>
+      <td>Total: </td>
+      <td colspan="3"><%= @cart_items.map(&:total_price).sum %></td>
+    </tr> 
   </tbody>
 </table>
 
 <%= link_to "Edit Cart", edit_cart_path, class: "btn btn-outline-success" %>
-<%= link_to 'Checkout', '/orders' ,method: :post, class: "btn btn-outline-success" %>
+<%= link_to "Checkout", new_checkout_path, class: "btn btn-outline-success" %> 
 </center>
 </div>
-

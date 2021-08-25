@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   resources :carts 
 
   resources :wishlists
-  resources :orders
+  resources :orders 
+  resources :checkouts
+  post "/verify", to: "checkouts#verify", as: :verify_checkout
 end

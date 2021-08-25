@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_19_104659) do
+ActiveRecord::Schema.define(version: 2021_08_25_093607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,13 +100,22 @@ ActiveRecord::Schema.define(version: 2021_08_19_104659) do
     t.index ["category_id", "product_id"], name: "index_categories_products_on_category_id_and_product_id", unique: true
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id"
+    t.decimal "total_amount"
+    t.integer "quantity"
+    t.integer "product_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "payment_id"
     t.decimal "amount"
-    t.integer "quantity"
     t.string "status"
+    t.integer "user_id"
+    t.string "payment_id"
   end
 
   create_table "products", force: :cascade do |t|
