@@ -14,17 +14,17 @@
     </tr>
   </thead>
   <tbody>
-    <% @wishlists.each do |wishlist| %>
-    <tr>     
-      <% @products.each do |product| %> 
-      <% if product.id == wishlist.product_id %>    
-      <td><%= product.name %></td>
-      <td><%= product.price %></td>
-      <td><%= link_to "Remove", cart, method: :delete, data: { confirm: "Are you sure?" } %></td>
-      <% end %>
-      <% end %>
+    <!-- < @wishlists.each do |wishlist| %>
+    <tr>   
+      <td><= wishlist.product.name %></td>
+      <td><= wishlist.product.price %></td>
+      <td><= link_to "Remove", wishlist, method: :delete, data: { confirm: "Are you sure?" } %></td>
+    
     </tr> 
-    <% end %>
+    < end %> -->
+    <tr>
+      
+    </tr>
   </tbody>
 </table>
 

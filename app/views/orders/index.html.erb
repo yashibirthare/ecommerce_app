@@ -1,3 +1,11 @@
+<head>
+  <style>
+    td, th{
+        border: 1px solid black;
+        padding: 1em;
+      }
+  </style>
+</head>
 <header>
     <%= render 'layouts/navigation' %>
 </header>
@@ -15,22 +23,22 @@
           <p class="card-text">Total Amount: <%= order.amount %></p>
           <p class="card-text">Status: <%= order.status %></p>
           <table>
+            <thead>
+              <tr>
+                <th>Product Name:</th>
+                <th>Quantity:</th>
+                <th>Product Unit Price:</th>
+              </tr>
+            </thead>
             <tbody>
               <% order.order_items.each do |order_item|%>
               <tr>
-                <th>Product Name:</th>
                 <td><%= order_item.product.name %></td>
-              </tr>
-              <tr>
-                <th>Quantity:</th>
                 <td><%= order_item.quantity %></td>
-              </tr>
-              <tr>
-                <th>Product Unit Price:</th>
                 <td><%= order_item.product.price %></td>
               </tr>
               <% end %>
-            </tbody>
+              </tbody>
           </table>
         </div>
       </div>

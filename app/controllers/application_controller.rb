@@ -8,7 +8,15 @@ class ApplicationController < ActionController::Base
             cart.save if cart.new_record?
             cart
 		end	
-	end  
+	end 
+
+	def current_wishlist
+		if current_user
+			wishlist = Wishlist.find_or_initialize_by(user_id: current_user.id)
+			wishlist.save if wishlist.new_record?
+			wishlist
+		end 	
+	end 
   
 	def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:account_update, keys: [:name, :phone, :profile_img, :address])
