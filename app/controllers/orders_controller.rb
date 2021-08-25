@@ -1,9 +1,15 @@
 class OrdersController < ApplicationController
     skip_before_action :verify_authenticity_token
+    
+    def index  
+        @orders = current_user.orders.include(:order_items)
+    end
+
     def create
         payment = Razorpay::Payment.fetch(params[:payment_id])
         if payment.status == 'captured'
             @order = Order.new
+            @order.user_id = current_user.id
             @order.payment_id = payment.id
             @order.amount = params[:amount]
             @order.status = "captured"
@@ -14,7 +20,7 @@ class OrdersController < ApplicationController
                     @order_item.order_id = @order.id
                     @order_item.product_id = item.product_id
                     @order_item.quantity = item.quantity
-                    @order_item.total_amount = @order.amount
+                    @order_item.total_amount = @order.amount 
                     if @order_item.save
                         item.destroy
                     end

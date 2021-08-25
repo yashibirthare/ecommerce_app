@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
-    def index 
+    def index   
     end
+
     def show 
         @cart = current_cart
         @cart_items = @cart.cart_items
@@ -8,7 +9,6 @@ class CartsController < ApplicationController
 
     def edit
         @cart = current_cart
-
     end
 
     def update

@@ -33,7 +33,7 @@ document.getElementById('rzp-button1').onclick = function(e){
           dataType:"json",
           data: {
             payment_id: response.razorpay_payment_id,
-            amount: <%= @order.amount %>,
+            amount: <%= @order.amount/100 %>,
             cart_item_id: <%= @cart.id %>
           },
           success:function(result){

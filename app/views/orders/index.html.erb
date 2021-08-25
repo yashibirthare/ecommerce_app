@@ -1,0 +1,32 @@
+<header>
+    <%= render 'layouts/navigation' %>
+</header>
+
+<div class="container">
+<center>
+<h1>My Orders</h1>
+<table class="table table-hover" style="margin-top: 4em;width: 60rem;">
+  <thead>
+    <tr>
+      <th scope="col">Order ID</th>
+      <th scope="col">Payment ID</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order|%>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.payment_id %></td>
+      <td><%= order.amount %></td>
+      <td><%= order.status %></td>
+
+    </tr>
+    <% end %>
+
+    
+  </tbody>
+</table>
+</center>
+</div>

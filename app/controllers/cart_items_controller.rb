@@ -9,7 +9,7 @@ class CartItemsController < ApplicationController
       @cart_item = product.cart_items.find_or_initialize_by(cart_id: @cart.id)
       @cart_item.quantity = params[:quantity] 
       if @cart_item.save
-        redirect_to carts_path
+        redirect_to homes_path  
       else
         redirect_to homes_path
       end  
