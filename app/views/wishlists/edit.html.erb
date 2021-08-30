@@ -4,9 +4,9 @@
 
 <div class="card" style="width: 40rem;margin-left: 25rem;">
   <div class="card-body">
-    <center><h5 class="card-title">Edit Cart</h5></center>
-    <%= nested_form_for @cart do |form|%>
-      <%= form.fields_for :cart_items do |f|%>
+    <center><h5 class="card-title">Edit Wishlist</h5></center>
+    <%= nested_form_for @wishlist do |form|%>
+      <%= form.fields_for :wishlist_items do |f|%>
         <%= f.label f.object.product.name %><br>
         <%= f.label :quantity %>
         <%= f.number_field :quantity %>

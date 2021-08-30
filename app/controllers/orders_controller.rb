@@ -25,6 +25,12 @@ class OrdersController < ApplicationController
                         item.destroy
                     end
                 end
+                @wishlist_items = current_wishlist.wishlist_items
+                @wishlist_items.each do |wishlist|
+                    if wishlist.order_id == @order.id
+                        wishlist.distroy
+                    end
+                end
                 redirect_to homes_path
             end
         else

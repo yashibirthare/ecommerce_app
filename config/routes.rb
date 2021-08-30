@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :cart_items, only: [:create]
+    resources :wishlist_items, only: [:create]
   end
   resources :categories
 

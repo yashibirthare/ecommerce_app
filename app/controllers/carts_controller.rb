@@ -12,6 +12,7 @@ class CartsController < ApplicationController
     end
 
     def update
+        #byebug
         @cart = current_cart 
         if @cart.update(cart_params)
             redirect_to homes_path

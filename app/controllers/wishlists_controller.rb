@@ -1,15 +1,27 @@
 class WishlistsController < ApplicationController
-  def index
-        
-        
+    def index 
     end
 
-    def create
-
-        @wishlists = current_user.wishlists.new(product_id: params[:product_id])
-        @wishlists.save
-        redirect_to homes_path
-    
+    def show 
+        @wishlist = current_wishlist
+        @wishlist_items = @wishlist.wishlist_items
     end
 
+    def edit
+        @wishlist = current_wishlist
+    end
+
+    def update
+        @wishlist = current_wishlist 
+        if @wishlist.update(wishlist_params)
+            redirect_to homes_path
+        else
+            render :edit
+        end
+    end
+
+    private
+    def wishlist_params
+        params.require(:wishlist).permit(wishlist_items_attributes: [:id, :quantity, :_destroy])
+    end
 end

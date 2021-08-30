@@ -1,0 +1,49 @@
+<header>
+    <%= render 'layouts/navigation' %>
+</header>
+
+<div class="container">
+<center>
+<h1>Wishlist</h1>
+<% if @wishlist_items.empty? %>
+  <h4 style="margin-top:3em">Your Wishlist is Empty</h4>
+<% else %>
+<table class="table table-hover" style="margin-top: 4em;width: 60rem;">
+  <thead>
+    <tr>
+      <th scope="col">Product Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Unit Price</th>
+      <th scope="col">Total Price</th>
+      <th scope="col">Available</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @wishlist_items.each do |wishlist|%>
+    <tr>
+      <td><%= wishlist.product.name %></td>     
+      <td><%= wishlist.quantity %></td>
+      <td><%= wishlist.product.price %></td>
+      <td><%= wishlist.total_price %></td>
+      <td>
+        <% if wishlist.product.quantity.zero? %>
+          <p>Not Available</p>
+        <% else%>
+          <%= form_with url: product_cart_items_path(:product_id => wishlist.product.id), method: :post do |f| %>              
+            <%= f.hidden_field :quantity,value:wishlist.quantity, in: 1..10 %>
+            <%= f.submit "Add to Cart" %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+    <tr>
+      <td colspan="3">Total: </td>
+      <td><%= @wishlist_items.map(&:total_price).sum %></td>
+    </tr>
+  </tbody>
+</table>
+<%= link_to "Edit Wishlist", edit_wishlist_path, class: "btn btn-outline-success" %>
+<% end %>
+</center>
+</div>
