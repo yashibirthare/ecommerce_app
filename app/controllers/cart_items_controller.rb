@@ -8,7 +8,7 @@ class CartItemsController < ApplicationController
       @cart_item = product.cart_items.find_or_initialize_by(cart_id: @cart.id)
       @cart_item.quantity = params[:quantity]   
       if @cart_item.save
-        redirect_to homes_path  
+        redirect_to cart_path(@cart_item.cart_id)
       else
         redirect_to homes_path
         flash[:error] = "Product not available for your quantity"

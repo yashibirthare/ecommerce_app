@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 			wishlist
 		end 	
 	end 
-  
+  	
 	def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:account_update, keys: [:name, :phone, :profile_img, :address])
    	end

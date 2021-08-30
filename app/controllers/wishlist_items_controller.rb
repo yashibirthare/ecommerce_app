@@ -7,7 +7,7 @@ class WishlistItemsController < ApplicationController
       		@wishlist_item = product.wishlist_items.find_or_initialize_by(wishlist_id: @wishlist.id)
       		@wishlist_item.quantity = params[:quantity]
       		if @wishlist_item.save
-      			redirect_to wishlist_path
+      			redirect_to wishlist_path(@wishlist_item.wishlist_id)
       		else
       			redirect_to homes_path
       		end

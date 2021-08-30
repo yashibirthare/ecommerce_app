@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: fixed;z-index: 1;width: 100%;">
  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#">User Dashboard</a>
+    <a class="navbar-brand" href="/homes">User Dashboard</a>
+    <% if user_signed_in? %>
       <%= link_to 'Profile', user_profile_path(current_user), class: "btn btn-outline-success my-2 my-sm-0" %>
       
       <%= link_to 'Cart', cart_path(current_user), class: "btn btn-outline-success btn-space" %>
@@ -11,7 +12,12 @@
 
       <%= link_to 'My Order', orders_path, class: "btn btn-outline-success btn-space" %>
 
-      <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-success btn-logout my-2 my-sm-0" ) %> 
+      <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-success btn-logout my-2 my-sm-0" ) %>
+      <%= image_tag current_user.profile_img, style: "width:60px;border-radius:50px;margin-left:20rem;" %> 
+    <% else %>
+      <%= link_to('Login', new_user_session_path, class: "btn btn-outline-success btn-logout my-2 my-sm-0") %> 
+      <%= link_to('SignUp', new_user_registration_path, class: "btn btn-outline-success btn-logout my-2 my-sm-0") %>
+    <% end %>
     
   </div>
 </nav>

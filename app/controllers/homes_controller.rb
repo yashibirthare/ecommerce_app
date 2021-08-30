@@ -5,6 +5,7 @@ class HomesController < ApplicationController
     @products = category.present? ? category.products : Product.all
     @cart = current_cart
     @wishlist = current_wishlist
+    @token = "123asdfd"
   end
 
   def show

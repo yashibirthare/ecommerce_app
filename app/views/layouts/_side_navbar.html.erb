@@ -2,7 +2,7 @@
 <div class="sidebar">
   <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
   <a href="#home"><i class="fa fa-fw fa-user"></i>Categories</a>
-
+  <ul>
   <% @categories.each do |category| %>
   
     <%= link_to category.name,homes_path(category_id: category.id) %>
@@ -11,7 +11,17 @@
         <%= link_to sub_cat.name,homes_path(category_id: sub_cat.id) %>
       <% end %>
     </ul>
-   
-
   <% end %>
+  </ul>
+  <% if user_signed_in? %>
+    <a href="/orders"><i class="fa fa-fw fa-gift"></i>My Orders</a>
+    <%= link_to "My Profile", user_profile_path(current_user),class:"fa fa-user"%>
+
+    <%= link_to 'Change Password', edit_user_password_url(current_user, reset_password_token: @token), class:"fa fa-key"%>
+  <% else %>
+    <%= link_to('Login', new_user_session_path) %> 
+    <%= link_to('SignUp', new_user_registration_path) %>
+  <% end %>
+
+
 </div>

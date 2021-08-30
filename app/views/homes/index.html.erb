@@ -2,61 +2,92 @@
 <header>
 	<%= render 'layouts/navigation' %>
 </header>
-
-<%= render 'layouts/side_navbar' %>
-
-<center>
-<h1>Product</h1>
-
-<div class="row" style="margin-left: 10em;">
-	<% if flash[:error] %>
-   		<div class="notice"><%= flash[:error] %></div>
- 	<% end %>
-	<% @products.each do |product| %>
-	<div class="col-md-4">
-		<div class="card" style="width: 15rem;">
-  			<div class="card-body">
-    			<h5 class="card-title">Product</h5>
-    			<br>
-        		<p class="card-text">Name: <%= product.name %></p>
-        		<p class="card-text">Price: <%= product.price %></p>
-        		<% if product.quantity.to_i.zero? %>
-        			<% unless @wishlist.wishlist_items.pluck(:product_id).include?(product.id) %>
-        				<%= form_with url: product_wishlist_items_path(:product_id => product.id), method: :post do |f| %>       				
-        					<%= f.number_field :quantity,value:1, in: 1..10 %><br><br>
-							<%= f.submit "Add to Wishlist" %>
-        				<% end %>
-        			<% else %>
-        				<p>Added to Wishlist</p>
-        			<% end %>
-        		<% else %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<%= render 'layouts/side_navbar' %>
+		</div>
+		<div class="col-md-10">
+		<center>
+			<h1 style="margin-top: 2.5em">Product</h1>
+			<div class="row">
+				<% if flash[:error] %>
+			   		<div class="notice"><%= flash[:error] %></div>
+			 	<% end %>
+				<% @products.each do |product| %>
+					<div class="col-md-4">
+						<div class="card" style="margin-bottom: 1em;">
+  							<div class="card-body">
+    							<h5 class="card-title">Product</h5>
+    							<br>
+        						<p class="card-text">Name: <%= product.name %></p>
+        						<p class="card-text">Price: <%= product.price %></p>
+        						<% if product.quantity.to_i.zero? %>
+        							<% unless @wishlist.wishlist_items.pluck(:product_id).include?(product.id) %>
+        								<%= form_with url: product_wishlist_items_path(:product_id => product.id), method: :post do |f| %>       				
+        									<%= f.number_field :quantity,value:1, in: 1..10 %><br><br>
+											<%= f.submit "Add to Wishlist" %>
+        								<% end %>
+        							<% else %>
+        								<p>Added to Wishlist</p>
+        							<% end %>
+        						<% else %>
         			
-        			<% unless @cart.cart_items.pluck(:product_id).include?(product.id) %>
-        				<%= form_with url: product_cart_items_path(:product_id => product.id), method: :post do |f| %>       				
-        					<%= f.number_field :quantity,value:1, in: 1..10 %><br><br>
-							<%= f.submit "Add to Cart" %>
-        				<% end %>
-        			<% else %>
-        				<p>Added to Cart</p>
-        			<% end %>
+        							<% unless @cart.cart_items.pluck(:product_id).include?(product.id) %>
+        								<%= form_with url: product_cart_items_path(:product_id => product.id), method: :post do |f| %>       				
+        									<%= f.number_field :quantity,value:1, in: 1..10 %><br><br>
+											<%= f.submit "Add to Cart" %>
+        								<% end %>
+        							<% else %>
+        								<p>Added to Cart</p>
+        							<% end %>
 
-    			<% end %>
-    			<br>
-    			<%= link_to "View Details", home_path(current_user,product_id: product.id), class: "btn btn-outline-success" %>
-  			</div>
+    							<% end %>
+    							<br>
+    							<%= link_to "View Details", home_path(current_user,product_id: product.id), class: "btn btn-outline-success" %>
+  							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</center>	
 		</div>
 	</div>
-	<% end %>
 </div>
-</center>	
 <% else %>
-
-<br>
-	<li>
-  		<%= link_to('Login', new_user_session_path) %>  
-  	</li>
-  	<li>
-  		<%= link_to('SignUp', new_user_registration_path) %>  
-  	</li>
+<header>
+	<%= render 'layouts/navigation' %>
+</header>
+<div class="container">
+	<div class="row">
+		<div class="col-md-2">
+			<%= render 'layouts/side_navbar' %>
+		</div>
+		<div class="col-md-10">
+		<center>
+			<h1>Product</h1>
+			<div class="row">
+				<% @products.each do |product| %>
+					<div class="col-md-4">
+						<div class="card" >
+  							<div class="card-body">
+    							<h5 class="card-title">Product</h5>
+    							<br>
+        						<p class="card-text">Name: <%= product.name %></p>
+        						<p class="card-text">Price: <%= product.price %></p>
+        						<% if product.quantity.to_i.zero? %>
+        							<%= link_to "Add to Wishlist", new_user_session_path, class: "btn btn-outline-success" %>
+        						<% else %>
+									<%= link_to "Add to Cart", new_user_session_path, class: "btn btn-outline-success" %>
+    							<% end %>
+  							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</center>	
+		</div>
+	</div>
+</div>
 <% end %>
 

@@ -14,7 +14,7 @@ class WishlistsController < ApplicationController
     def update
         @wishlist = current_wishlist 
         if @wishlist.update(wishlist_params)
-            redirect_to homes_path
+            redirect_to wishlist_path
         else
             render :edit
         end
