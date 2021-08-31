@@ -10,6 +10,8 @@ gem 'rails', '~> 6.1.4'
 gem 'devise'
 #activeadmin
 gem 'activeadmin'
+#image_processing
+gem "image_processing", "~> 1.0"
 #letter_opner
 gem "letter_opener", group: :development
 gem 'jquery-rails'

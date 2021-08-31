@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
-  
+    actions :index, :show
+    
     index do
       selectable_column
       id_column
