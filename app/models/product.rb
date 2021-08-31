@@ -6,6 +6,7 @@ class Product < ApplicationRecord
 	has_many :cart_items
 	has_many :carts, through: :cart_items
 	has_many :order_items
+	has_many_attached :product_images
 
 	def quantity_update
 		if saved_change_to_attribute?(:quantity) && attribute_before_last_save(:quantity) == 0 && quantity > 0

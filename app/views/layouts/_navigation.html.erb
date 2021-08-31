@@ -13,7 +13,9 @@
       <%= link_to 'My Order', orders_path, class: "btn btn-outline-success btn-space" %>
 
       <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-success btn-logout my-2 my-sm-0" ) %>
-      <%= image_tag current_user.profile_img, style: "width:60px;border-radius:50px;margin-left:20rem;" %> 
+      <% if current_user.profile_img.present? %>
+        <%= image_tag current_user.profile_img, style: "width:60px;border-radius:50px;margin-left:20rem;" %> 
+      <% end %>
     <% else %>
       <%= link_to('Login', new_user_session_path, class: "btn btn-outline-success btn-logout my-2 my-sm-0") %> 
       <%= link_to('SignUp', new_user_registration_path, class: "btn btn-outline-success btn-logout my-2 my-sm-0") %>

@@ -13,7 +13,9 @@
     <label><%= @user.phone %></label>
     <br>
     <label>Image:</label>
+    <% if @user.profile_img.present? %>
     <%= image_tag @user.profile_img, style: "width:50px;" %>
+    <% end %>
     <br>
     <label>Address:</label>
     <label><%= @user.address %></label>
