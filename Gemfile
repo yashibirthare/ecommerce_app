@@ -11,7 +11,8 @@ gem 'devise'
 #activeadmin
 gem 'activeadmin'
 #gem 'shippo'
-gem 'shippo'
+# gem 'shippo'
+gem 'easypost'
 #image_processing
 gem "image_processing", "~> 1.0"
 #letter_opner
