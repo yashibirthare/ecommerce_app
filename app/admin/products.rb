@@ -10,9 +10,9 @@ ActiveAdmin.register Product do
       column :categories
       column :quantity
       column :created_at
-      column "product_images" do |m|
+      column "product_images" do |img|
         ul do
-          m.product_images.each do |photo|
+          img.product_images.each do |photo|
             li do
               image_tag url_for(photo), size: "100x100"
             end

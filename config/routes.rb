@@ -19,5 +19,4 @@ Rails.application.routes.draw do
   resources :wishlists
   resources :orders 
   resources :checkouts
-  post "/verify", to: "checkouts#verify", as: :verify_checkout
 end
