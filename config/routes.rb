@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :wishlists
   resources :orders 
   resources :checkouts
+  post '/confirm_payment', to: "checkouts#confirm_payment", as: :confirm_payment_checkout
 end
