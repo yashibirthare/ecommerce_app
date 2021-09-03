@@ -2,25 +2,43 @@
   <%= render 'layouts/navigation' %>
 </header>
 
-<div class="card" style="width: 20rem;margin-left: 25rem;">
+<div class="card" style="width: 30rem;margin-left: 25rem;">
   <div class="card-body">
     <center><h5 class="card-title">User Profile</h5></center>
     <br>
-    <label>Email:</label>
-    <label><%= @user.email %></label>
-    <br>
-    <label>Phone:</label>
-    <label><%= @user.phone %></label>
-    <br>
-    <label>Image:</label>
-    <% if @user.profile_img.present? %>
-    <%= image_tag @user.profile_img, style: "width:50px;" %>
-    <% end %>
-    <br>
-    <label>Address:</label>
-    <label><%= @user.address %></label>
-
+    <div class="form-space">
+      <label>Email:</label>
+      <label><%= current_user.email %></label>
+      <br>
+      <label>Phone:</label>
+      <label><%= current_user.phone %></label>
+      <br>
+      <label>Image:</label>
+      <% if current_user.profile_img.present? %>
+      <%= image_tag current_user.profile_img, style: "width:50px;" %>
+      <% end %>
+      <br>
+      <label>Address:</label>
+      <label><%= current_user.address %></label>
+    </div>
     <br><br>
     <center><%= link_to 'Update Profile', edit_user_registration_path, class: "btn btn-outline-success my-2 my-sm-0" %></center>
+    <br>
+    <center><button id="show">Add Shipping Address</button></center>
+    <div id="form" style="display: none;">
+        <%= render partial: 'shipping_address_form', shipping_address: @shipping_address%>
+    </div>
   </div>
 </div>
+<script>
+
+$(document).ready(function(){
+ 
+  $("#show").click(function(){
+    $("#form").show();
+    $("#hide").hide();
+  });
+
+});
+
+</script>

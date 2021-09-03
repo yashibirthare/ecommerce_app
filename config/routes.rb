@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root to: "homes#index"
 
   resources :user_profiles, only: [:show] 
-
+  post '/shipping_address', to: "user_profiles#shipping_address", only: [:create]
   resources :homes
   resources :carts 
 

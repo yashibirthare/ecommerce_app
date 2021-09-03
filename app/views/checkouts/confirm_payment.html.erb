@@ -10,22 +10,16 @@
     <th>Currency</th>
     <th>Carrier</th>
     <th>Service</th>
-    <th>Select Rate<th>
   </tr>
-  <% shipment.rates.each do |rate| %>
+  <% shipment_rates.each do |rate| %>
   <tr>
     <td><%= rate.id %></td>
     <td><%= rate.rate %></td>
     <td><%= rate.currency %> </td>
     <td><%= rate.carrier %></td>
     <td><%= rate.service %></td>
-    <td>
-      <form action = "/shipment/<%= rate.shipment_id %>/buy" method = "post">
-        <button type="submit" name="rate" value="<%=rate.id%>">Buy</button>
-      </form>
-    </td>
   </tr>
   <% end %>
-</table>
+</table> 
 <%= link_to "Checkout", new_checkout_path, class: "btn btn-outline-success" %>
 <center>

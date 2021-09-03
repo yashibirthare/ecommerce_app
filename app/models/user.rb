@@ -8,5 +8,6 @@ class User < ApplicationRecord
   has_one :cart
   has_many :wishlists
   has_many :orders
+  has_one :shipping_address
   
 end
