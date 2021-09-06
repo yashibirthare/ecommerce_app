@@ -6,20 +6,24 @@
 <table>
   <tr>
     <th>Rate id</th>
+    <td><%= @shipment_rates["id"] %></td>
+  </tr>
+  <tr>  
     <th>Rate</th>
-    <th>Currency</th>
-    <th>Carrier</th>
-    <th>Service</th>
+    <td><%= @shipment_rates["rate"] %></td>
   </tr>
-  <% shipment_rates.each do |rate| %>
   <tr>
-    <td><%= rate.id %></td>
-    <td><%= rate.rate %></td>
-    <td><%= rate.currency %> </td>
-    <td><%= rate.carrier %></td>
-    <td><%= rate.service %></td>
+    <th>Currency</th>
+    <td><%= @shipment_rates["currency"] %> </td>
   </tr>
-  <% end %>
+  <tr>
+    <th>Carrier</th>
+    <td><%= @shipment_rates["carrier"] %></td>
+  </tr>
+  <tr>
+    <th>Service</th>
+    <td><%= @shipment_rates["service"] %></td>
+  </tr>
 </table> 
-<%= link_to "Checkout", new_checkout_path, class: "btn btn-outline-success" %>
+<%= link_to "Checkout", new_checkout_path(:id => @shipment["id"]), class: "btn btn-outline-success" %>
 <center>
